@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://npmcdn.com/react-router@2.4.0/umd/ReactRouter.min.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        var pageContent = document.getElementById("container"); var { Router, Route, IndexRoute, IndexLink, Link } = ReactRouter; var App = React.createClass({ render: function() { return (
+        <div>
+            <h1>React SPA</h1>
+            <ul className="header">
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/stuff">About SPA</Link>
+                </li>
+                <li>
+                    <Link to="/contact">Contact Us</Link>
+                </li>
+            </ul>
+            <div className="content">
+                {this.props.children}
+            </div>
+        </div>
+        ) } }); var Contact = React.createClass({ render: function() { return (
+        <div>
+            <h2>Contact Us</h2>
+            <form action="#" method="post" name="form1" id="form1">
+                Your e-mail:
+                <br/>
+                <input name="email" type="text" value="" />
+                <br/>
+                <br/> Subject:
+                <br/>
+                <input name="subject" type="text" value="" />
+                <br/>
+                <br/> Type verification image:
+                <br/>
+                <input name="verif_box" type="text" value="" />
+                <br/>
+                <br/> Message:
+                <br/>
+                <textarea name="message"></textarea>
+                <br/>
+                <br/>
+                <input name="Submit" type="submit" value="Send Message" />
+            </form>
+        </div>
+        ); } }); var Stuff = React.createClass({ render: function() { return (
+        <div>
+            <h2>About SPA</h2>
+            <p>Single-Page Applications (SPAs) are Web apps that load a single HTML page and dynamically update that page as the user interacts with the app. SPAs use AJAX and HTML5 to create fluid and responsive Web apps, without constant page reloads. However, this means much of the work happens on the client side, in JavaScript.</p>
+            <p>The origins of the term single-page application are unclear, though the concept was discussed at least as early as 2003.[3] Stuart (stunix) Morris wrote the Self-Contained website at slashdotslash.com with the same goals and functions in April 2002[4] and later the same year, Lucas Birdeau, Kevin Hakman, Michael Peachey and Evan Yeh described a single page application implementation in the US patent 8,136,109.[5]</p>
+            <p>Modern browsers that can parse HTML5 allow developers to shift the user interface (UI) and application logic from web servers to the client. Mature open-source libraries are available that support the building of an SPA, reducing the amount of javascript the developer has to write.</p>
+            
+        </div>
+        ); } }); var Home = React.createClass({ render: function() { return (
+        <div>
+            <h2>Welcome to React SPA</h2>
+            <p>As you may know, the content you see in your browser is formed from a combination of HTML, JavaScript, Cascading Style Sheets (CSS), and plugins determined by the required content and functionality. A Single-page application (SPA), also known as a single-page interface (SPI), is a web application or web site that fits on a single web page with the goal of providing a more fluid user experience. Our customers are often looking for exactly this type of experience for their users and knowing about this option up front can make their decision process much easier. To keep things concise, we’re going to focus on HTML and JavaScript for discussing this new style of website architecture.</p>
+            <p>Over the years, more and more JavaScript has been crammed into your web experience. In general this is a good thing – more JavaScript means more dynamic functionality for the user. Innovations in the use of JavaScript and dramatic performance improvements in JavaScript engines have transformed the language from window dressing for HTML into arguably the primary tool for modern web development.</p>
+            <p>Single Page Applications capitalize on this trend and push HTML to the background of web page architecture. By contrast, the default architecture for websites is to serve up a bunch of different pages and link them together with some sort of navigation structure. These pages may be backed by static HTML files or a server generating the content dynamically. In these scenarios, the organization of the HTML content drives the architecture and JavaScript is executed to add functionality to the page. In an SPA, the HTML file is sometimes barely a stub and may only exist to launch the code in the JavaScript files. In a way, SPAs fully complete the transformation of the browser from a tool for viewing content into a platform for running applications.</p>
+        </div>
+        ); } }); ReactDOM.render(
+        <Router>
+            <Route path="/" component={App}>
+                <IndexRoute component={Home} />
+                <Route path="stuff" component={Stuff}>
+                </Route>
+                <Route path="contact" component={Contact} />
+            </Route>
+        </Router>, pageContent);
+    </script>
+</body>
+
+</html>
